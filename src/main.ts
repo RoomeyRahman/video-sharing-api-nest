@@ -21,7 +21,11 @@ async function bootstrap() {
     exposedHeaders: 'X-VIDEOBOOK-KEY,X-VIDEOBOOK-KEY-EXPIRES',
   };
 
-  app.use(helmet());
+  app.use(
+    helmet({
+      contentSecurityPolicy: process.env.NODE_ENV === 'production',
+    }),
+  );
   app.use(cookieParser());
   app.enableCors(options);
   await app.listen(PORT);

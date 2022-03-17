@@ -19,10 +19,10 @@ const DB_CONNECTION = process.env.DB_CONNECTION;
   imports: [
     ConfigModule.forRoot(),
     MongooseModule.forRoot(DB_CONNECTION),
-    // GraphQLModule.forRoot<ApolloDriverConfig>({
-    //   driver: ApolloDriver,
-    //   autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
-    // }),
+    GraphQLModule.forRoot<ApolloDriverConfig>({
+      driver: ApolloDriver,
+      autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
+    }),
     UsersModule,
   ],
   controllers: [AppController],
